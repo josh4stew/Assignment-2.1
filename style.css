@@ -1,60 +1,75 @@
 :root {
-    --color1:white;
-    --color2:rgb(233, 239, 236);
-    --color3:rgb(196, 218, 210);
-    --color4:rgb(106, 156, 137);
+    --color1: white;
+    --color2: rgb(233, 239, 236);
+    --color3: rgb(196, 218, 210);
+    --color4: rgb(106, 156, 137);
     --color5: rgb(119, 174, 166);
     --color6: rgb(63, 93, 89);
 }
 
 body {
     background-color: var(--color1);
-}
-.navbar {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    right: 0%;
-    height: 20px;
-    background-color: var(--color5);
-    border-bottom: 1px solid black;
-
-    text-align: center;
-}
-
-.navbar a, footer a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    margin: 5%;
-}
-
-.about {
-    margin: 5px;
-    margin-top: 33px;
-    
-    background-color: var(--color2);
-    border: 1px solid black;
-    padding: 2%;
-}
-
-.aboutTxt{
-    float: right;
-    width: 48%;
-}
-
-.aboutTxt p{
-    padding: 5px;
-    margin: 5px;
-    margin-top: -9px;
+    margin: 0;
 }
 
 .header {
     font-size: large;
 }
 
-.about img, .aboutPicTxt {
+.grid {
+    display: grid;
+
+    grid-template-columns: 0.5fr 0.5fr 0.2fr 0.8fr;
+    grid-auto-rows: auto;
+
+    grid-template-areas:
+        "about about about about"
+        "skillsHead skillsHead expHead expHead"
+        "skills skills exp exp"
+        "projHead projHead projHead blogHead"
+        "proj proj proj blog"
+    ;
+
+    margin: 1%;
+    gap: 0.5rem;
+}
+
+nav {
+    background-color: var(--color5);
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+nav a,
+footer a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin: 5%;
+}
+
+.about {
+    grid-area: about;
+    background-color: var(--color2);
+    border: 1px solid black;
+    padding: 2%;
+}
+
+.aboutTxt {
+    float: right;
     width: 48%;
 }
+
+.aboutTxt p {
+    padding: 5px;
+    margin: 5px;
+    margin-top: -9px;
+}
+
+.about img,
+.aboutPicTxt {
+    width: 48%;
+}
+
 .aboutPicTxt {
     text-align: center;
 }
@@ -64,51 +79,46 @@ body {
     margin: 5px;
 }
 
-.skills, .skillsHeader{
-    float: left;
-    width: 47%;
-    margin: 5px;
+.skillsHead {
+    grid-area: skillsHead;
 }
 
-.experience, .experienceHeader {
-    float: right;
-    width: 47%;
-    margin: 5px;
-    
+.expHead {
+    grid-area: expHead;
 }
 
-.skills, .experience {
-    margin-top: 0px;
+.skills, .exp {
     border: 1px solid black;
-}
-.skillsHeader, .experienceHeader {
-    margin-left: 10px;
+    padding: 5px;
 }
 
 .skills {
     background-color: var(--color4);
+    grid-area: skills;
 }
 
-.experience {
+.exp {
     background-color: var(--color4);
+    grid-area: exp;
 }
 
-.skills p, .experience p {
-    padding: 5px;
-    margin: 5px;
+.projHead {
+    grid-area: projHead;
 }
 
-.project, .projectHeader {
-    float: left;
-    width: 57.5%;
-    margin: 5px;
+.blogHead {
+    grid-area: blogHead;
+}
+
+.proj {
+    grid-area: proj;
 }
 
 .oval {
     float: left;
     width: 30%;
     height: 300px;
-    margin: 1%;
+    margin: .25rem;
     text-align: center;
 
     background-color: var(--color5);
@@ -116,7 +126,7 @@ body {
     border-radius: 50%;
 }
 
-.oval img{
+.oval img {
     margin-top: 15%;
     width: 50%;
 }
@@ -126,16 +136,9 @@ body {
     padding: 5px;
 }
 
-.blog, .blogHeader {
-    float: right;
-    width: 38%;
-    margin: 5px;
+.blog {
+    grid-area: blog;
     text-align: center;
-}
-
-.blogHeader, .projectHeader {
-    margin-left: 10px;
-    text-align: left;
 }
 
 .blog p {
@@ -143,7 +146,7 @@ body {
     background-color: var(--color3);
     border-bottom-right-radius: 50%;
     border-bottom-left-radius: 50%;
-    height: 220px;
+    height: 210px;
 
     margin-top: 0%;
     padding: 5px;
@@ -154,14 +157,25 @@ body {
     padding: 10px;
 }
 
-footer { 
-    margin-top: -10px;
-    float: left;
-    width: 100%;
-    height: 20px;
+footer {
     background-color: var(--color5);
     border-top: 1px solid black;
-
     text-align: center;
 }
 
+@media only screen and (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "about"
+            "skillsHead"
+            "skills"
+            "expHead"
+            "exp"
+            "projHead"
+            "proj"
+            "blogHead"
+            "blog"
+        ;
+    }
+}
